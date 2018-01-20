@@ -29,4 +29,6 @@ dependencies {
     //butterknife
     annotationProcessor 'com.jakewharton:butterknife-compiler:latest.release'
     compile 'com.jakewharton:butterknife:latest.release'
+
+    compile 'com.github.sd6352051:NiftyDialogEffects:v1.0.3'
 }
