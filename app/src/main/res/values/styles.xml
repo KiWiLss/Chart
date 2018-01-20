@@ -1,0 +1,89 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+
+
+
+
+
+
+
+    <!--Base Dialog Style.-->
+    <style name="style_dialog_base" parent="AppTheme">
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowAnimationStyle">@style/Animation.AppCompat.Dialog</item>
+        <item name="android:windowSoftInputMode">stateUnspecified|adjustPan</item>
+    </style>
+
+    <!--Fullscreen Dialog Style.-->
+    <style name="style_dialog_transparency" parent="style_dialog_base">
+        <item name="android:windowBackground">@color/transparency</item>
+    </style>
+
+    <!--Bottom Anim Dialog Style.-->
+    <style name="style_dialog_bottom" parent="style_dialog_transparency">
+        <item name="android:windowBackground">@color/transparency</item>
+    </style>
+
+    <!--Center Anim Dialog Style.-->
+    <style name="style_dialog_center" parent="style_dialog_transparency">
+        <item name="android:windowBackground">@color/transparency</item>
+    </style>
+
+    <!--Top Anim Dialog Style.-->
+    <style name="style_dialog_top" parent="style_dialog_transparency">
+        <item name="android:windowBackground">@color/transparency</item>
+    </style>
+
+    <style name="alertDialog" parent="AlertDialog.AppCompat.Light">
+        <item name="android:textColor">@color/text_black_color</item>
+    </style>
+
+    <style name="alertDialog_NeutralButtonStyle" parent="Widget.AppCompat.Button.ButtonBar.AlertDialog">
+        <item name="android:textColor">@color/text_black_color</item>
+        <item name="android:background">@null</item>
+    </style>
+    <style name="alertDialog_NegativeButtonStyle" parent="Widget.AppCompat.Button.ButtonBar.AlertDialog">
+        <item name="android:textColor">@color/text_black_color</item>
+    </style>
+
+    <style name="alertDialog_PositiveButtonStyle" parent="Widget.AppCompat.Button.ButtonBar.AlertDialog">
+        <item name="android:textColor">@color/text_black_color</item>
+    </style>
+
+
+
+    <!--以右下角为锚点缩放动画-->
+    <style name="anim_right_bottom_scale">
+        <item name="android:windowEnterAnimation">@anim/anim_bottom_right_scale_show</item>
+        <item name="android:windowExitAnimation">@anim/anim_bottom_right_scale_hide</item>
+    </style>
+    <!--以右上角为锚点缩放动画-->
+    <style name="anim_right_top_scale">
+        <item name="android:windowEnterAnimation">@anim/anim_top_right_scale_show</item>
+        <item name="android:windowExitAnimation">@anim/anim_top_right_scale_hide</item>
+    </style>
+    <!--底部滑动进入(退出)-->
+    <style name="anim_bottom_slid">
+        <item name="android:windowEnterAnimation">@anim/slide_in_bottom</item>
+        <item name="android:windowExitAnimation">@anim/slide_out_bottom</item>
+    </style>
+
+    <!--Dialog进出动画默认执行时间-->
+    <integer name="default_dialog_animation_duration">300</integer>
+
+
+    <style name="line_margin_1px">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1px</item>
+        <item name="android:background">#1a98ef</item>
+    </style>
+
+</resources>
