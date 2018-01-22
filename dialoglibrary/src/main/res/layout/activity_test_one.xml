@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="create()"
+            android:textAllCaps="false"
+            android:onClick="create"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="just"
+            android:textAllCaps="false"
+            android:onClick="justUse"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="fromArray"
+            android:textAllCaps="false"
+            android:onClick="fromArray"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="fromIterable"
+            android:textAllCaps="false"
+            android:onClick="fromIterable"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="defer"
+            android:textAllCaps="false"
+            android:onClick="defer"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="timer"
+            android:textAllCaps="false"
+            android:onClick="timer"/>
+    </LinearLayout>
+
+
+
+
+
+</ScrollView>
