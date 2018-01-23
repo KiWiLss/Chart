@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <com.leandom.banner.CycleViewPager
+        android:id="@+id/banner"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:autoScrollInterval="4000"
+        app:pageSwitchDuration="800" />
+
+    <com.leandom.banner.ViewPagerIndicator
+        android:id="@+id/viewpager_indicator"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="#30ffffff"
+        android:gravity="center"
+        android:paddingBottom="10dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="10dp"
+        app:indicatorNormal="@drawable/indicator_gray_rectangle"
+        app:indicatorSelected="@drawable/indicator_red_rectangle"
+        app:indicatorPadding="10dp"
+        />
+
+    <me.relex.circleindicator.CircleIndicator
+        android:id="@+id/cici"
+        android:layout_width="match_parent"
+        android:layout_height="16dp"
+        android:layout_marginTop="100dp"
+        app:ci_width="7dp"
+        app:ci_height="4dp"
+        app:ci_margin="6dp"
+        app:ci_animator="@animator/guide"
+        app:ci_drawable="@drawable/indicator_red_rectangle"
+        app:ci_drawable_unselected="@drawable/indicator_gray_rectangle"
+        />
+
+</FrameLayout>
