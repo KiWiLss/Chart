@@ -26,15 +26,19 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    //noinspection GradleCompatible
     implementation 'com.android.support:appcompat-v7:26.1.0'
     implementation 'com.android.support:design:26.1.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
-
     compile 'com.leandom:cycleviewpager:1.0.0@aar'
-
     compile 'me.relex:circleindicator:1.2.2@aar'
+    implementation 'com.android.support:recyclerview-v7:26.1.0'
+    implementation 'com.android.support:design:26.1.0'
+
+    compile 'com.gavin.com.library:stickyDecoration:1.2.1'
+
+    compile 'com.timehop.stickyheadersrecyclerview:library:0.4.3@aar'
 }

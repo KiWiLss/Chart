@@ -77,7 +77,17 @@
                 android:layout_height="wrap_content"
                 android:text="indicator"
                 android:onClick="indicator"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="recycler1"
+                android:onClick="recycler1"/>
 
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tworecycler1"
+                android:onClick="tworecycler1"/>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

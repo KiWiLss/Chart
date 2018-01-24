@@ -48,6 +48,56 @@
             android:text="timer"
             android:textAllCaps="false"
             android:onClick="timer"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="interval"
+            android:textAllCaps="false"
+            android:onClick="interval"/>
+
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="intervalRange"
+            android:textAllCaps="false"
+            android:onClick="intervalRange"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="map"
+            android:textAllCaps="false"
+            android:onClick="map"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="flatmap"
+            android:textAllCaps="false"
+            android:onClick="flatmap"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="flatmap2"
+            android:textAllCaps="false"
+            android:onClick="flatmap2"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="concatMap"
+            android:textAllCaps="false"
+            android:onClick="concatMap"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="组合"
+            android:textAllCaps="false"
+            android:onClick="concat"/>
     </LinearLayout>
 
 

@@ -1,5 +1,6 @@
 package com.magicsoft.dialoglibrary.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -8,9 +9,13 @@ import android.view.View;
 import android.view.WindowManager;
 
 import com.magicsoft.dialoglibrary.R;
+import com.magicsoft.dialoglibrary.mdoel.TestOne;
+import com.magicsoft.dialoglibrary.mdoel.TestTwo;
 
+import org.reactivestreams.Publisher;
 import org.reactivestreams.Subscription;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.Callable;
@@ -28,6 +33,7 @@ import io.reactivex.ObservableSource;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
+import io.reactivex.functions.Function;
 
 
 /**
@@ -50,6 +56,10 @@ public class TestOneActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         setContentView(R.layout.activity_test_one);
+
+        Intent intent = getIntent();
+        TestOne key = intent.getParcelableExtra("key");
+        Log.e(TAG, "onCreate: "+key.toString() );
 
 
 
@@ -327,5 +337,252 @@ public class TestOneActivity extends AppCompatActivity {
 // 注：timer操作符默认运行在一个新线程上
 // 也可自定义线程调度器（第3个参数）：timer(long,TimeUnit,Scheduler)
 
+
+        Flowable.timer(2, TimeUnit.SECONDS).subscribe(new FlowableSubscriber<Long>() {
+            @Override
+            public void onSubscribe(Subscription s) {
+                    s.request(10);
+            }
+
+            @Override
+            public void onNext(Long aLong) {
+                Log.e(TAG, "onNext: "+aLong);
+            }
+
+            @Override
+            public void onError(Throwable t) {
+
+            }
+
+            @Override
+            public void onComplete() {
+
+            }
+        });
+    }
+
+    public void interval(View view) {
+        // 参数说明：
+        // 参数1 = 第1次延迟时间；
+        // 参数2 = 间隔时间数字；
+        // 参数3 = 时间单位；
+        Observable.interval(1, 1, TimeUnit.SECONDS)
+                .subscribe(new Observer<Long>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(Long aLong) {
+                        Log.i(TAG, "接收到了事件"+ aLong  );
+                        if (aLong==60){
+
+                        }
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+    }
+
+    public void intervalRange(View view) {
+
+        Observable.intervalRange(3,10,1,1,TimeUnit.SECONDS)
+                .subscribe(new Observer<Long>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(Long aLong) {
+                        Log.i(TAG, "onNext: "+aLong);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+    }
+
+    public void map(View view) {
+        Observable.create(new ObservableOnSubscribe<Integer>() {
+            @Override
+            public void subscribe(ObservableEmitter<Integer> e) throws Exception {
+                e.onNext(1);
+                e.onNext(2);
+                e.onNext(3);
+                e.onComplete();
+            }
+        }).map(new Function<Integer, String>() {
+            @Override
+            public String apply(Integer integer) throws Exception {
+                return "被改变的数据"+String.valueOf(integer);
+            }
+        })
+                .subscribe(new Consumer<String>() {
+            @Override
+            public void accept(String s) throws Exception {
+                Log.e(TAG, "accept: "+s );
+            }
+        });
+    }
+
+    public void flatmap(View view) {
+
+        ArrayList<String> list = new ArrayList<>();
+        for (int i = 0; i < 10; i++) {
+            list.add("*"+i);
+        }
+
+        Observable.create(new ObservableOnSubscribe<Integer>() {
+            @Override
+            public void subscribe(ObservableEmitter<Integer> e) throws Exception {
+                e.onNext(1);
+                e.onNext(2);
+                e.onNext(3);
+                e.onComplete();
+            }
+        }).flatMap(new Function<Integer, ObservableSource<? extends String>>() {
+            @Override
+            public ObservableSource<? extends String> apply(final Integer integer) throws Exception {
+                return Observable.create(new ObservableOnSubscribe<String>() {
+                    @Override
+                    public void subscribe(ObservableEmitter<String> e) throws Exception {
+                        e.onNext("修改的数据"+integer);
+                        e.onComplete();
+                    }
+                });
+            }
+        }).subscribe(new Consumer<String>() {
+            @Override
+            public void accept(String s) throws Exception {
+                Log.e(TAG, "accept: "+s );
+            }
+        });
+
+        Flowable.fromIterable(list)
+                .flatMap(new Function<String, Publisher<? extends String>>() {
+                    @Override
+                    public Publisher<? extends String> apply(String s) throws Exception {
+                        Log.i(TAG, "apply: "+s);
+                        String newData= "修改过的"+s;
+                        return Flowable.just(newData);
+                    }
+                }).subscribe(new Consumer<String>() {
+            @Override
+            public void accept(String s) throws Exception {
+                Log.i(TAG, "accept: "+s);
+            }
+        });
+
+
+
+    }
+
+    public void flatmap2(View view) {
+        //没有顺序
+        Observable.create(new ObservableOnSubscribe<TestOne>() {
+            @Override
+            public void subscribe(ObservableEmitter<TestOne> e) throws Exception {
+                TestOne testOne = new TestOne(8, "hello");
+                e.onNext(testOne);
+                e.onComplete();
+            }
+        }).flatMap(new Function<TestOne, ObservableSource<TestTwo>>() {
+            @Override
+            public ObservableSource<TestTwo> apply(TestOne testOne) throws Exception {
+                TestTwo testTwo = new TestTwo(testOne.getData() + "", testOne.getMsg());
+                return Observable.just(testTwo);
+            }
+        }).subscribe(new Consumer<TestTwo>() {
+            @Override
+            public void accept(TestTwo testTwo) throws Exception {
+                Log.e(TAG, "accept: "+testTwo.toString() );
+            }
+        });
+
+
+        Flowable.create(new FlowableOnSubscribe<TestOne>() {
+            @Override
+            public void subscribe(FlowableEmitter<TestOne> e) throws Exception {
+
+            }
+        },BackpressureStrategy.BUFFER)
+                .flatMap(new Function<TestOne, Publisher<TestTwo>>() {
+                    @Override
+                    public Publisher<TestTwo> apply(TestOne testOne) throws Exception {
+                        return null;
+                    }
+                }).subscribe(new Consumer<TestTwo>() {
+            @Override
+            public void accept(TestTwo testOne) throws Exception {
+
+            }
+        });
+    }
+
+    public void concatMap(View view) {
+        //按顺序执行
+        Observable.create(new ObservableOnSubscribe<Integer>() {
+            @Override
+            public void subscribe(ObservableEmitter<Integer> e) throws Exception {
+                e.onNext(1);
+                e.onNext(3);
+                e.onNext(5);
+            }
+        }).concatMap(new Function<Integer, ObservableSource<String>>() {
+            @Override
+            public ObservableSource<String> apply(Integer integer) throws Exception {
+                 List<String> list = new ArrayList<>();
+                for (int i = 0; i < 3; i++) {
+                    list.add("我是事件 " + integer + "拆分后的子事件" + i);
+                    // 通过concatMap中将被观察者生产的事件序列先进行拆分，再将每个事件转换为一个新的发送三个String事件
+                    // 最终合并，再发送给被观察者
+                }
+                return Observable.fromIterable(list);
+            }
+        }).subscribe(new Consumer<String>() {
+            @Override
+            public void accept(String s) throws Exception {
+                Log.e(TAG, "accept: "+s );
+            }
+        });
+
+
+    }
+
+    public void concat(View view) {
+        Observable.concat(Observable.just(1),
+                Observable.just(2),Observable.just(3))
+                .subscribe(new Consumer<Integer>() {
+                    @Override
+                    public void accept(Integer integer) throws Exception {
+                        Log.e(TAG, "accept: "+integer );
+                    }
+                });
+
+        Observable.concatArray(Observable.just(1)
+        ,Observable.just(3),Observable.just(5),Observable.just(7))
+                .subscribe(new Consumer<Integer>() {
+                    @Override
+                    public void accept(Integer integer) throws Exception {
+                        Log.i(TAG, "accept: "+integer);
+                    }
+                });
     }
 }

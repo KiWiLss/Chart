@@ -3,15 +3,16 @@ package com.magicsoft.dialoglibrary;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
+import com.magicsoft.dialoglibrary.activity.TestLayerListActivity;
 import com.magicsoft.dialoglibrary.activity.TestOneActivity;
+import com.magicsoft.dialoglibrary.mdoel.TestOne;
 
 public class ScrollingActivity extends AppCompatActivity {
 
@@ -26,8 +27,9 @@ public class ScrollingActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
+                startActivity(new Intent(ScrollingActivity.this, TestLayerListActivity.class));
             }
         });
     }
@@ -47,7 +49,10 @@ public class ScrollingActivity extends AppCompatActivity {
         int id = item.getItemId();
         switch (id) {
             case R.id.action_RxTest:
-                startActivity(new Intent(this, TestOneActivity.class));
+                TestOne testOne = new TestOne(9,"test");
+                Intent intent = new Intent(this, TestOneActivity.class);
+                intent.putExtra("key",testOne);
+                startActivity(intent);
             return true;
         }
         //noinspection SimplifiableIfStatement

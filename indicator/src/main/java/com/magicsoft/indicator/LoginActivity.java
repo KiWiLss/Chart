@@ -30,6 +30,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.magicsoft.indicator.activity.RecyclerActivity1;
+import com.magicsoft.indicator.activity.TwoRecyclerActivity;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -282,6 +285,16 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
     public void indicator(View view) {
         startActivity(new Intent(this,IndicatorActivity.class));
+    }
+
+    public void recycler1(View view) {
+        startActivity(new Intent(this,RecyclerActivity1.class));
+    }
+
+
+
+    public void tworecycler1(View view) {
+        startActivity(new Intent(this,TwoRecyclerActivity.class));
     }
 
 
