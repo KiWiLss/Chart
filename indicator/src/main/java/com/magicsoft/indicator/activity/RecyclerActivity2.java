@@ -3,11 +3,14 @@ package com.magicsoft.indicator.activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.magicsoft.indicator.R;
+import com.magicsoft.indicator.adapter.RecyclerAdapter2;
 import com.magicsoft.indicator.model.Category;
 import com.magicsoft.indicator.model.Team;
+import com.timehop.stickyheadersrecyclerview.StickyRecyclerHeadersDecoration;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,6 +38,14 @@ public class RecyclerActivity2 extends AppCompatActivity {
 
         initData();
 
+
+        rv.setLayoutManager(new LinearLayoutManager(this));
+        RecyclerAdapter2 adapter2 = new RecyclerAdapter2(this, categoryList);
+        rv.setAdapter(adapter2);
+
+        // Add the sticky headers decoration,给球队添加标题
+        final StickyRecyclerHeadersDecoration headersDecor = new StickyRecyclerHeadersDecoration(adapter2);
+        rv.addItemDecoration(headersDecor);
 
 
     }
