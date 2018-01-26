@@ -5,12 +5,15 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.Toast;
 
 import com.magicsoft.indicator.R;
 import com.magicsoft.indicator.adapter.RecyclerAdapter2;
 import com.magicsoft.indicator.model.Category;
 import com.magicsoft.indicator.model.Team;
 import com.timehop.stickyheadersrecyclerview.StickyRecyclerHeadersDecoration;
+import com.timehop.stickyheadersrecyclerview.StickyRecyclerHeadersTouchListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,7 +50,18 @@ public class RecyclerActivity2 extends AppCompatActivity {
         final StickyRecyclerHeadersDecoration headersDecor = new StickyRecyclerHeadersDecoration(adapter2);
         rv.addItemDecoration(headersDecor);
 
-
+        //头部点击监听
+        StickyRecyclerHeadersTouchListener touchListener =
+                new StickyRecyclerHeadersTouchListener(rv, headersDecor);
+        touchListener.setOnHeaderClickListener(
+                new StickyRecyclerHeadersTouchListener.OnHeaderClickListener() {
+                    @Override
+                    public void onHeaderClick(View header, int position, long headerId) {
+                        Toast.makeText(RecyclerActivity2.this, "Header position: " + position + ", id: " + headerId,
+                                Toast.LENGTH_SHORT).show();
+                    }
+                });
+        rv.addOnItemTouchListener(touchListener);
     }
 
     private void initData() {

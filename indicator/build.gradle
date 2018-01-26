@@ -41,4 +41,17 @@ dependencies {
     compile 'com.gavin.com.library:stickyDecoration:1.2.1'
 
     compile 'com.timehop.stickyheadersrecyclerview:library:0.4.3@aar'
+
+    compile 'com.deep:deepimg:1.0'
+
+    compile 'com.github.zagum:Android-SwitchIcon:1.3.6'
+
+    compile 'com.github.matthiasrobbers:shortbread:1.0.2'
+    annotationProcessor 'com.github.matthiasrobbers:shortbread-compiler:1.0.2'
+
+    //butterknife
+    annotationProcessor 'com.jakewharton:butterknife-compiler:latest.release'
+    compile 'com.jakewharton:butterknife:latest.release'
+
+    compile 'com.wnafee:vector-compat:1.0.5'
 }

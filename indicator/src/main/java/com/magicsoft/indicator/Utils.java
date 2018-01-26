@@ -1,5 +1,6 @@
 package com.magicsoft.indicator;
 
+import android.os.Environment;
 import android.util.Log;
 
 import com.magicsoft.indicator.model.City;
@@ -19,6 +20,18 @@ import java.util.List;
 
 
 public class Utils {
+
+    public static boolean getSDStatus(){
+        String externalStorageState = Environment.getExternalStorageState();
+        if (externalStorageState.equals(Environment.MEDIA_MOUNTED)){
+            return true;
+        }
+        return false;
+    }
+
+
+
+
     {
         Log.e("MMM", "instance initializer: " );
     }

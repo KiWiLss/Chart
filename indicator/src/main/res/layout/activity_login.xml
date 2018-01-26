@@ -92,6 +92,28 @@
                 android:layout_height="wrap_content"
                 android:text="Tworecycler1"
                 android:onClick="tworecycler1"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="deep"
+                android:onClick="deep"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="itemDecoration"
+                android:onClick="itemDecoration"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="vector"
+                android:onClick="vector"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="soft"
+                android:onClick="soft"/>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

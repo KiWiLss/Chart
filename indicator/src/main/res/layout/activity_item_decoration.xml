@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+
+    <com.github.zagum.switchicon.SwitchIconView
+        android:id="@+id/siv_one"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/wifi"
+        tools:ignore="VectorDrawableCompat"
+        android:layout_margin="50dp"
+        app:si_animation_duration="500"
+        app:si_disabled_alpha="0.6"
+        app:si_disabled_color="#b7b7b7"
+        app:si_enabled="false"
+        app:si_no_dash="true"
+        app:si_tint_color="@color/colorAccent"/>
+
+
+
+</LinearLayout>

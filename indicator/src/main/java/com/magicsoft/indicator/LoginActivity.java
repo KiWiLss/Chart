@@ -30,18 +30,26 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.magicsoft.indicator.activity.DeepTestActivity;
+import com.magicsoft.indicator.activity.ItemDecorationActivity;
 import com.magicsoft.indicator.activity.RecyclerActivity1;
 import com.magicsoft.indicator.activity.RecyclerActivity2;
+import com.magicsoft.indicator.activity.SoftActivity;
 import com.magicsoft.indicator.activity.TwoRecyclerActivity;
+import com.magicsoft.indicator.activity.VectorActivity;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import shortbread.Shortcut;
 
 import static android.Manifest.permission.READ_CONTACTS;
 
 /**
  * A login screen that offers login via email/password.
  */
+
+@Shortcut(id = "login", icon = R.drawable.ic_launcher_background, shortLabel = "login",rank = 1)
 public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<Cursor> {
 
     /**
@@ -300,6 +308,22 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
     public void recycler2(View view) {
         startActivity(new Intent(this,RecyclerActivity2.class));
+    }
+
+    public void deep(View view) {
+        startActivity(new Intent(this,DeepTestActivity.class));
+    }
+
+    public void itemDecoration(View view) {
+        startActivity(new Intent(this,ItemDecorationActivity.class));
+    }
+
+    public void vector(View view) {
+        startActivity(new Intent(this,VectorActivity.class));
+    }
+
+    public void soft(View view) {
+        startActivity(new Intent(this,SoftActivity.class));
     }
 
 
