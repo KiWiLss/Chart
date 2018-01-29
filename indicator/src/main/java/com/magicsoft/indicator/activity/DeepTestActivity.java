@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 
+import com.deep.imagelib.DeepImage;
 import com.deep.imagelib.beans.ImageConfigure;
 import com.magicsoft.indicator.R;
 
@@ -38,11 +39,11 @@ public class DeepTestActivity  extends AppCompatActivity {
         setContentView(R.layout.activity_deep);
 
         ImageConfigure configure = new ImageConfigure();
-        //configure.directoryname = "android";//目录名
+        configure.directoryname = "android";//目录名
         configure.filename = "beautiful.jpg";//文件名
 
-//        DeepImage deepImage = new DeepImage(this, R.drawable.image5,configure);
-//        File file = deepImage.asFile();
+        DeepImage deepImage = new DeepImage(this, R.drawable.image5,configure);
+        File file = deepImage.asFile();
 //
 //
 //

@@ -114,6 +114,11 @@
                 android:layout_height="wrap_content"
                 android:text="soft"
                 android:onClick="soft"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="toolbar"
+                android:onClick="toolbar1"/>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

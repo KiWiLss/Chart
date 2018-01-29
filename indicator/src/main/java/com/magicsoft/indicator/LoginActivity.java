@@ -37,6 +37,7 @@ import com.magicsoft.indicator.activity.RecyclerActivity2;
 import com.magicsoft.indicator.activity.SoftActivity;
 import com.magicsoft.indicator.activity.TwoRecyclerActivity;
 import com.magicsoft.indicator.activity.VectorActivity;
+import com.magicsoft.indicator.activity.design.ToolbarActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -324,6 +325,10 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
     public void soft(View view) {
         startActivity(new Intent(this,SoftActivity.class));
+    }
+
+    public void toolbar1(View view) {
+        startActivity(new Intent(this,ToolbarActivity.class));
     }
 
 
